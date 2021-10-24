@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+    <Button
+        android:id="@+id/selectPotButton"
+        android:layout_width="370dp"
+        android:layout_height="70dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+        android:text="Selected Pot" />
+
+    <TextView
+        android:id="@+id/outputATEMP"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:text="온도"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/selectPotButton"
+        android:layout_alignStart="@+id/selectPotButton"/>
+
+    <TextView
+        android:id="@+id/outputAHUM"
+        android:layout_width="180dp"
+        android:layout_height="100dp"
+        android:text="습도"
+        android:layout_alignTop="@+id/outputATEMP"
+        android:layout_alignEnd="@+id/selectPotButton"/>
+
+    <TextView
+        android:id="@+id/outputGHUM"
+        android:layout_width="370dp"
+        android:layout_height="70dp"
+        android:text="수분"
+        android:layout_below="@+id/outputAHUM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+
+    <Button
+        android:id="@+id/controlSENSOR"
+        android:layout_width="370dp"
+        android:layout_height="70dp"
+        android:text="Control Sensor"
+        android:layout_below="@+id/outputGHUM"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
+</RelativeLayout>
