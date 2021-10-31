@@ -19,6 +19,7 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class DetailActivity extends AppCompatActivity {
 
@@ -38,10 +39,36 @@ public class DetailActivity extends AppCompatActivity {
         outputGHUM = (TextView)findViewById(R.id.outputGHUM);
 
 
-        String url = "http://dbgus1006.ivyro.net/Detail.php";
-        selectDatabase selectDatabase = new selectDatabase(url, null);
-        selectDatabase.execute();
 
+        // 핸들러로 전달할 runnable 객체. 수신 스레드 실행
+        final Runnable runnable = new Runnable() {
+            @Override
+            public void run() {
+                String url = "http://dbgus1006.ivyro.net/Detail.php";
+                selectDatabase selectDatabase = new selectDatabase(url, null);
+                selectDatabase.execute();
+            }
+        };
+
+        // 새로운 스레드 실행 코드. 1초 단위로 현재 시각 표시 요청
+        class NewRunnable implements Runnable {
+            @Override
+            public void run() {
+                while (true) {
+                    try {
+                        Thread.sleep(3000);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
+                    runOnUiThread(runnable);
+                }
+            }
+        }
+
+        NewRunnable nr = new NewRunnable();
+        Thread t = new Thread(nr);
+        t.start();
 
     }
 
